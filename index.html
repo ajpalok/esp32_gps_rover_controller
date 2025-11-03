@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rover Control Panel</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚗 GPS Rover Control Panel</h1>
+            <div class="connection-status">
+                <span id="connectionStatus" class="status-indicator">●</span>
+                <span id="connectionText">Connecting...</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Map Section -->
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-controls">
+                    <button id="centerMapBtn" title="Center on rover">📍 Center</button>
+                    <button id="clearWaypointsBtn" title="Clear waypoints">🗑️ Clear</button>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <!-- Status Display -->
+                <div class="status-section">
+                    <h2>Status</h2>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <label>Latitude:</label>
+                            <span id="latitude">--</span>
+                        </div>
+                        <div class="status-item">
+                            <label>Longitude:</label>
+                            <span id="longitude">--</span>
+                        </div>
+                        <div class="status-item">
+                            <label>Heading:</label>
+                            <span id="heading">--</span>
+                        </div>
+                        <div class="status-item">
+                            <label>Speed:</label>
+                            <span id="speed">--</span>
+                        </div>
+                        <div class="status-item">
+                            <label>Satellites:</label>
+                            <span id="satellites">--</span>
+                        </div>
+                        <div class="status-item">
+                            <label>GPS Status:</label>
+                            <span id="gpsStatus">--</span>
+                        </div>
+                        <div class="status-item">
+                            <label>Mode:</label>
+                            <span id="mode">Manual</span>
+                        </div>
+                        <div class="status-item">
+                            <label>Waypoint:</label>
+                            <span id="waypoint">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autonomous Control -->
+                <div class="autonomous-section">
+                    <h2>Autonomous Navigation</h2>
+                    <div class="autonomous-controls">
+                        <p class="info-text">Click on map to add waypoints</p>
+                        <button id="startAutoBtn" class="action-btn start">🚀 Start Autonomous</button>
+                        <button id="stopAutoBtn" class="action-btn stop">⏹️ Stop Autonomous</button>
+                        <div class="waypoint-info">
+                            <span>Waypoints: <strong id="waypointCount">0</strong></span>
+                            <span>Distance: <strong id="distanceToTarget">--</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Log -->
+                <div class="log-section">
+                    <h2>Activity Log</h2>
+                    <div id="activityLog" class="log-content">
+                        <p>Waiting for activity...</p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="manual.html" class="nav-btn manual">🎮 Manual Control</a>
+                    <button id="settingsBtn" class="settings-btn">⚙️ Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Settings</h2>
+            <form id="settingsForm">
+                <div class="form-group">
+                    <label>Rover IP Address:</label>
+                    <input type="text" id="roverIP" placeholder="192.168.4.1">
+                </div>
+                <div class="form-group">
+                    <label>Update Interval (ms):</label>
+                    <input type="number" id="updateInterval" value="500" min="100" max="5000">
+                </div>
+                <div class="form-group">
+                    <label>Max Speed (PWM):</label>
+                    <input type="number" id="maxSpeed" value="200" min="100" max="255">
+                </div>
+                <div class="form-group">
+                    <label>Proximity Threshold (m):</label>
+                    <input type="number" id="proximityThreshold" value="5" min="1" max="20">
+                </div>
+                <button type="submit" class="action-btn">Save Settings</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

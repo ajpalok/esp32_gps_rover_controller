@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Control - Rover</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Manual Rover Control</h1>
+            <div class="connection-status">
+                <span id="connectionStatus" class="status-indicator">●</span>
+                <span id="connectionText">Connecting...</span>
+            </div>
+        </header>
+
+        <div class="manual-page-content">
+            <!-- Back Button -->
+            <div class="navigation-bar">
+                <a href="index.html" class="back-btn">← Back to Main</a>
+            </div>
+
+            <!-- Status Display (Compact) -->
+            <div class="status-section compact">
+                <h2>Rover Status</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <label>Position:</label>
+                        <span id="position">--</span>
+                    </div>
+                    <div class="status-item">
+                        <label>Heading:</label>
+                        <span id="heading">--</span>
+                    </div>
+                    <div class="status-item">
+                        <label>Speed:</label>
+                        <span id="speed">--</span>
+                    </div>
+                    <div class="status-item">
+                        <label>GPS:</label>
+                        <span id="gpsStatus">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manual Control Section -->
+            <div class="manual-control-main">
+                <h2>Direct Control</h2>
+                <p class="info-text">Use buttons or keyboard (W/A/S/D or Arrow Keys)</p>
+                
+                <!-- Control Pad -->
+                <div class="control-pad">
+                    <div class="control-buttons">
+                        <div class="button-row">
+                            <button class="control-btn large" id="forwardBtn">
+                                <span class="arrow">▲</span>
+                                <span class="label">Forward</span>
+                            </button>
+                        </div>
+                        <div class="button-row">
+                            <button class="control-btn large" id="leftBtn">
+                                <span class="arrow">◄</span>
+                                <span class="label">Left</span>
+                            </button>
+                            <button class="control-btn large stop" id="stopBtn">
+                                <span class="arrow">■</span>
+                                <span class="label">Stop</span>
+                            </button>
+                            <button class="control-btn large" id="rightBtn">
+                                <span class="arrow">►</span>
+                                <span class="label">Right</span>
+                            </button>
+                        </div>
+                        <div class="button-row">
+                            <button class="control-btn large" id="backwardBtn">
+                                <span class="arrow">▼</span>
+                                <span class="label">Backward</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Speed Control -->
+                <div class="speed-control">
+                    <h3>Speed Control</h3>
+                    <div class="speed-slider">
+                        <label for="speedSlider">Speed: <strong id="speedValue">150</strong></label>
+                        <input type="range" id="speedSlider" min="100" max="255" value="150">
+                        <div class="speed-labels">
+                            <span>Slow</span>
+                            <span>Fast</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keyboard Shortcuts Info -->
+                <div class="keyboard-info">
+                    <h3>⌨️ Keyboard Shortcuts</h3>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut-item">
+                            <kbd>W</kbd> or <kbd>↑</kbd>
+                            <span>Forward</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>S</kbd> or <kbd>↓</kbd>
+                            <span>Backward</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>A</kbd> or <kbd>←</kbd>
+                            <span>Left</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>D</kbd> or <kbd>→</kbd>
+                            <span>Right</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>Space</kbd>
+                            <span>Stop</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Log -->
+                <div class="log-section">
+                    <h3>Control Log</h3>
+                    <div id="activityLog" class="log-content">
+                        <p>Waiting for commands...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="manual.js"></script>
+</body>
+</html>
