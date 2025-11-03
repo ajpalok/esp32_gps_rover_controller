@@ -36,15 +36,13 @@ function initMap() {
         attribution: 'Tiles © Esri',
         maxZoom: 19
     });
-    const stamen = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg', {
-        attribution: 'Map tiles by Stamen Design, CC BY 3.0 — Map data © OpenStreetMap contributors',
-        subdomains: 'abcd',
-        maxZoom: 18
+    const terrain = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenTopoMap contributors'
     });
 
     // Add default layer and layer control (collapsed on load, positioned top-left to avoid overlap)
     osm.addTo(map);
-    L.control.layers({ 'OSM': osm, 'Satellite (Esri)': esri, 'Terrain (Stamen)': stamen }, null, { collapsed: true, position: 'topleft' }).addTo(map);
+    L.control.layers({ 'OSM': osm, 'Satellite (Esri)': esri, 'Terrain': terrain }, null, { collapsed: true, position: 'topleft' }).addTo(map);
 
     // Custom rover icon
     const roverIcon = L.divIcon({
